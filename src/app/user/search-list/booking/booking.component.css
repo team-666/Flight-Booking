@@ -1,0 +1,7 @@
+.flightDetails{
+    padding-bottom: 18px;
+    font-size : 18px;
+    display: grid;
+    grid-template-columns: 10% 20% 30%;
+    grid-gap:20px;
+}

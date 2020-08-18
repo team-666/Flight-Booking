@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" >
+    <div style="max-width: 400px;">
+    </div>
+    <div  style="font-size:24px;">Flight Booking Details</div>
+    <div class="flightDetails">
+        
+            <div style="padding-bottom: 18px;">Source<br/>
+                <input type="text"  style="max-width : 250px;" 
+                [(ngModel)]="flight.originAirportCode" class="form-control" readonly 
+                formControlName="originAirportCode"/>
+                </div>
+                <div style="padding-bottom: 18px;">Destination<br/>
+                    <input type="text" style="max-width : 250px;" 
+                    [(ngModel)]="flight.destinationAirportCode" class="form-control" readonly
+                    formControlName="destinationAirportCode"/>
+                    </div>
+                 <div style="padding-bottom: 18px;">Departure date<br/>
+                <input type="text"  style="max-width : 250px;" 
+                [(ngModel)]="flight.departureDateTime" class="form-control" readonly
+                formControlName="departureDateTime"/>
+                </div>
+                <div style="padding-bottom: 18px;">Arrival date<br/>
+                    <input type="text" style="max-width : 250px;"
+                    [(ngModel)]="flight.arrivalDateTime"  class="form-control" readonly
+                    formControlName="arrivalDateTime"/>
+                </div>
+                <div style="padding-bottom: 18px;">Price($)<br/>
+                    <input type="text" style="max-width : 250px;"
+                    [(ngModel)]="flight.fare"  class="form-control" readonly
+                    formControlName="fare"/>
+                </div>
+
+                <div style="padding-bottom: 18px;">Travel Class<br/>
+                    <input type="text" style="max-width : 250px;"
+                    [(ngModel)]="flight.travelClass"  class="form-control" readonly
+                    formControlName="travelClass"/>
+                </div>
+              
+         </div>
+    <div style="padding-bottom: 18px;font-size : 24px;">Personal Details</div>
+    <div style="display: flex; padding-bottom: 18px;max-width : 450px;">
+    <div style=" margin-left: 0; margin-right: 1%; max-width: 49%;">First name<span style="color: red;"> *</span><br/>
+        <input type="text"  style="max-width: 100%;" class="form-control" formControlName="fName"
+        [ngClass]="{'is-invalid' : bookingForm.get('fName').touched && bookingForm.get('fName').invalid }">
+        <div *ngIf="bookingForm.get('fName').touched && bookingForm.get('fName').invalid" class="invalid-feedback">
+            First Name is required</div>
+      
+    </div>
+    <div style=" margin-left: 1%; margin-right: 0; max-width: 49%;">Last name<span style="color: red;"> *</span><br/>
+        <input type="text"  style="max-width: 100%;" class="form-control" formControlName="lName"/>
+    </div>
+    </div><div style="padding-bottom: 18px;">Phone<span style="color: red;"> *</span><br/>
+        <input type="text"  style="max-width : 450px;" class="form-control" formControlName="phone"/>
+    </div>
+    <div style="padding-bottom: 18px;">Email<span style="color: red;"> *</span><br/>
+        <input type="text"  style="max-width : 450px;" class="form-control" formControlName="email"/>
+    </div>
+    <div style="padding-bottom: 18px;">Address<span style="color: red;"> *</span><br/>
+        <input type="text"  style="max-width : 450px;" class="form-control" formControlName="address"/>
+    </div>
+   
+   
+    <div style="padding-bottom: 18px;"><input name="skip_Submit" value="Submit" type="submit"/></div>
+   
+    </form>

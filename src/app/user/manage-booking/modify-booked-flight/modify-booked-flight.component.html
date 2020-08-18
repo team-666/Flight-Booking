@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <div class="container ">
+     
+        <ng-template #notFound>
+            <span class="required" >Booking id not existed</span>
+           </ng-template>
+        
+        <div class="container card shadow-lg p-3 mb-5 bg-white rounded">
+          <h3 class="font-weight-bold">Search Schedule Flights</h3>
+          <section style="border: 2px solid black; padding: 20px;">
+            <form>
+                <label>Schedule Flight ID: </label>
+                <input  type="text" class="form-control"  [(ngModel)]="scheduleFlightId" [ngModelOptions]="{standalone: true}" required>
+                <input type="submit" value="Search" class="submit-btn" (click)="searchScheduleFlight(scheduleFlightId)" [disabled]="scheduleFlightId == ''">
+                <br><br>
+
+                <div *ngIf="showErorMsg" class="required">{{modifiedMsg}}</div>
+              
+                <div *ngIf="show">
+                    <div *ngIf="scheduleFlight$ | async; let scheduleFlight;else notFound">
+
+                        <label><b>Details: </b></label><br>
+                        <label>Source Airport: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.originAirportCode}} readonly>
+                        <br>
+                        <label>Destination Airport: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.destinationAirportCode}} readonly>       
+                        <br>
+                        <label>Departure Date: </label>
+                        <input type="date" class="form-control" #dep value={{scheduleFlight.departureDateTime}}
+                        [min]="getToday()" >
+                        <br>
+                        <label>Arrival Date: </label>
+                        <input type="date" class="form-control" #arr value={{scheduleFlight.arrivalDateTime}}
+                        [min]="getToday()" >
+                        <br>
+                        <label>Flight ID: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.flightNumber}} readonly>
+                        <br>
+                        <label>Seats: </label>
+                        <input type="text" class="form-control" value={{bookedSeats}} readonly>
+                        <br>
+                        <input type="submit" value="Modify Booking" class="submit-btn modify-btn" (click)="modifyScheduledFlight(dep.value, arr.value)">
+                        <input type="submit" value="Cancel Booking" class="submit-btn modify-btn" (click)="cancelBooking(dep.value, arr.value)"
+                        [disabled]="dateError">
+                    </div>
+                
+              </div>
+          </form>
+        </section>
+        </div>
+        </div>
+  </div>

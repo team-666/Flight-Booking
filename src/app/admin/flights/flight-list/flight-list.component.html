@@ -1,0 +1,11 @@
+
+<a routerLink="create"  class="btn btn-primary">Add</a>
+<router-outlet></router-outlet>
+<div class="alert alert-success" *ngIf="isDisplayMessage">Record Updated Successfully</div>
+
+<div class="table">
+
+<table id="flightList" class="display" cellspacing="0" width="97%"></table>
+</div>
+
+<div *ngIf="showloading" class="spinner">Loading...</div>

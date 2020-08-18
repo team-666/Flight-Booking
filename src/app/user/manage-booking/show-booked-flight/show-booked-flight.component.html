@@ -1,0 +1,63 @@
+  <div class="wrapper">
+    <div class="container ">
+      <ul class="nav nav-tabs" role="tablist">
+        
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="scheduledFlight/download" (click)="view()">Download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " data-toggle="tab" href="scheduledFlight/show" (click)="view()">SEARCH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="scheduledFlight/modify" (click)="modify()">MODIFY</a>
+          </li>
+      </ul>
+        <br><br>
+        <ng-template #notFound>
+         <span class="required" >Booking id not existed</span>
+        </ng-template>
+       
+        <div class="container card shadow-lg p-3 mb-5 bg-white rounded">
+          <h3 class="font-weight-bold">Search Schedule Flights</h3>
+          <section style="border: 2px solid black; padding: 20px;">
+            <form>
+                <label>Flight Booking id: </label>
+                <input  type="text" class="form-control"  [(ngModel)]="scheduleFlightId" [ngModelOptions]="{standalone: true}" required>
+                <input type="submit" value="SEARCH" class="btn btn-primary" (click)="searchScheduleFlight(scheduleFlightId)" [disabled]="!scheduleFlightId">
+                <br><br>
+                <div *ngIf="show">
+                    <div *ngIf="scheduleFlight$ | async; let scheduleFlight ;else notFound">
+
+                        <label><b>Details: </b></label><br>
+                        <label>Source Airport: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.originAirportCode}} readonly>
+                        <br>
+                        <label>Destination Airport: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.destinationAirportCode}} readonly>       
+                        <br>
+                        <label>Departure Time: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.departureDateTime}} readonly>
+                        <br>
+                        <label>Arrival Time: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.arrivalDateTime}} readonly>
+                        <br>
+                        <label>Flight ID: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.flightNumber}} readonly>
+                        <br>
+                        <label>Available Seats: </label>
+                        <input type="text" class="form-control" value={{scheduleFlight.seatsAvailable}} readonly>
+                        <br>
+                    </div>
+                
+              </div>
+          </form>
+        </section>
+        </div>
+        </div>
+        
+     
+  <footer class="navbar navbar-light bg-light fixed-bottom" style="padding: 10px;">
+      Flight Reservation System
+      <span style="float: right;">2020</span>
+  </footer>   
+  </div>

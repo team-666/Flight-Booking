@@ -1,0 +1,93 @@
+<div class="container">
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="createForm" >
+      <div class="form-group" >
+        <label for="flightNumber" class="control-label">Flight Number</label>
+        <input type="text" class="form-control" id="flightNumber" placeholder="Flight Number" formControlName="flightNumber"
+               [ngClass]="{'is-invalid' : createForm.get('flightNumber').touched && createForm.get('flightNumber').invalid }">
+        <div *ngIf="createForm.get('flightNumber').touched && createForm.get('flightNumber').invalid" class="invalid-feedback">Flight Number is required</div>
+      </div>
+      <div class="form-group" >
+        <label for="airlineCode" class="control-label">Airline Code</label>
+        <input type="text" class="form-control" id="airlineCode" placeholder="AirlineCode" formControlName="airlineCode"
+               [ngClass]="{'is-invalid' : createForm.get('airlineCode').touched && createForm.get('airlineCode').invalid }">
+        <div *ngIf="createForm.get('airlineCode').touched && createForm.get('airlineCode').invalid" class="invalid-feedback">AirlineCode is required</div>
+      </div>
+  
+      <div class="form-group" >
+        <label for="aircraftTypeCode" class="control-label">Aircraft type code</label>
+        <input type="text" class="form-control" id="aircraftTypeCode" placeholder="aircraftTypeCode" formControlName="aircraftTypeCode"
+               [ngClass]="{'is-invalid' : createForm.get('aircraftTypeCode').touched && createForm.get('aircraftTypeCode').invalid }">
+        <div *ngIf="createForm.get('aircraftTypeCode').touched && createForm.get('aircraftTypeCode').invalid " 
+        class="invalid-feedback">AircraftTypeCode is required</div>
+      </div>
+  
+      <div class="form-group"  >
+        <label for="originAirportCode" class="control-label">Origin AirPort</label>
+        <input type="text" class="form-control" id="originAirportCode" placeholder="originAirportCode" formControlName="originAirportCode"
+        [ngClass]="{'is-invalid' : createForm.get('originAirportCode').touched && createForm.get('originAirportCode').invalid }">
+  
+        <div *ngIf="createForm.get('originAirportCode').touched && createForm.get('originAirportCode').invalid" class="invalid-feedback">Origin Airport is required</div>
+      </div>
+  
+      <div class="form-group"  >
+        <label for="destinationAirportCode" class="control-label">Destination AirPort</label>
+        <input type="text" class="form-control" id="destinationAirportCode" placeholder="destinationAirportCode" formControlName="destinationAirportCode"
+        [ngClass]="{'is-invalid' : createForm.get('destinationAirportCode').touched && createForm.get('destinationAirportCode').invalid }">
+  
+        <div *ngIf="createForm.get('destinationAirportCode').touched && createForm.get('destinationAirportCode').invalid" class="invalid-feedback">
+            Destination Airport is required</div>
+      </div>
+  
+      <div class="form-group" >
+        <label for="departureDate" class="control-label">Departure Date</label>
+        <input type="date" class="form-control" id="departureDate" placeholder="departureDate" formControlName="departureDateTime"
+        [ngClass]="{'is-invalid' : createForm.get('departureDateTime').touched && createForm.get('departureDateTime').invalid }"
+        [min]="getToday()">
+  
+        <div *ngIf="createForm.get('departureDateTime').touched && createForm.get('departureDateTime').invalid" class="invalid-feedback">
+            Departure Date is required</div>
+      </div>
+  
+      <div class="form-group"  >
+        <label for="arrivalDate" class="control-label">Arrival Date</label>
+        <input type="date" class="form-control" id="arrivalDate" placeholder="arrivalDate" formControlName="arrivalDateTime"
+        [ngClass]="{'is-invalid' : createForm.get('arrivalDateTime').touched && createForm.get('arrivalDateTime').invalid }"
+        [min]="getToday()">
+  
+        <div *ngIf="createForm.get('arrivalDateTime').touched && createForm.get('arrivalDateTime').invalid" class="invalid-feedback">
+            Arrival Date is required</div>
+      </div>
+
+      <div class="form-group" >
+        <label for="fare" class="control-label">Ticket Fare</label>
+        <input type="text" class="form-control" id="fare" placeholder="Fare" formControlName="fare"
+               [ngClass]="{'is-invalid' : createForm.get('fare').touched && createForm.get('fare').invalid }">
+        <div *ngIf="createForm.get('fare').touched && createForm.get('fare').invalid" class="invalid-feedback">Fare is required</div>
+      </div>
+
+      <div class="form-group" >
+        <label for="seats" class="control-label">Available seats</label>
+        <input type="text" class="form-control" id="seats" placeholder="seats" formControlName="seats"
+               [ngClass]="{'is-invalid' : createForm.get('seats').touched && createForm.get('seats').invalid }">
+        <div *ngIf="createForm.get('seats').touched && createForm.get('seats').invalid" class="invalid-feedback">Seats is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="travelClass" class="control-label">Travel Class</label>
+        <select class="form-control" formControlName="travelClass">
+            <option value="economy">Economy class</option>
+            <option value="business">Business class</option>
+            <option value="first">First class</option>
+        </select>
+        <span class="select-arrow"></span>
+    </div>
+  
+
+  
+      <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Submit</button>
+    </form>
+  </div>
+  
+  <router-outlet></router-outlet>
+  

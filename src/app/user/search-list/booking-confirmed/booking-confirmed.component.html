@@ -1,0 +1,25 @@
+  <div>
+      <section style="border: 2px solid black; padding: 20px; margin: 4%;">
+        <h5><b>Your Booking has been confirmed.</b></h5>
+        <b>Booking Id:</b> <br><br>{{booking.bookingReference}}
+        <div>
+            <b>Flight Details:</b><br>
+            Number:<br>{{booking.flightNumber}}
+            <div *ngIf="flight$ | async; let flight">
+                Source: {{flight.originAirportCode }} <br>
+                Destination: {{flight.destinationAirportCode }}<br>
+                Departure: {{flight.departureDateTime }}<br>
+                Arrival: {{flight.arrivalDateTime }}<br>
+
+                Fare:{{flight.fare}}<br>
+
+                travelClass:{{flight.travelClass}}<br>
+              </div>
+        </div><br>
+      </section>
+  </div>
+  <button class="btn-primary" (click)="backToSearch()">Back To Search</button>
+  <footer class="navbar navbar-light bg-light fixed-bottom" style="padding: 10px;">
+    Flight Reservation System
+    <span style="float: right;">2020</span>
+</footer>

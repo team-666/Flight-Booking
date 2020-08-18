@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flight-site';
+  login = false;
+  
+   constructor(){
+    let l = sessionStorage.getItem('loggedIn');
+    this.login = l == "true" ?true : false;
+    console.log("logged in"+this.login);
+   }
 }

@@ -1,0 +1,21 @@
+.required{
+    color: red;
+}
+.submit-btn {
+	color: #fff;
+	background-color: #f23e3e;
+	font-weight: 400;
+	height: 50px;
+	font-size: 14px;
+	border: none;
+	width: 10%;
+    border-radius: 40px;
+    margin-top:10px;
+	text-transform: uppercase;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+}
+
+.modify-btn{
+    width: 20%;
+}

@@ -1,0 +1,13 @@
+
+
+
+
+<router-outlet></router-outlet>
+<div>Available Flights</div>
+<div class="table">
+
+<table id="searchList" class="display" cellspacing="0" width="97%"></table>
+</div>
+
+<div *ngIf="showloading" class="spinner">Loading...</div>
+<div *ngIf="isDisplayMessage">No Flights Found</div>
